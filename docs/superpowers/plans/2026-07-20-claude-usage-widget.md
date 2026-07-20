@@ -42,7 +42,7 @@
   "type": "module",
   "description": "Browser extension showing Claude.ai session/weekly usage limits, reset times, and reset notifications.",
   "scripts": {
-    "test": "node --test test/",
+    "test": "node --test test/*.test.mjs",
     "validate-manifests": "node scripts/validate-manifests.mjs",
     "generate-icons": "node scripts/generate-icons.mjs",
     "build": "node scripts/build.mjs"
