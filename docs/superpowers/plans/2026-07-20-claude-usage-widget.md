@@ -130,14 +130,16 @@ test("formatResetIn: past time", () => {
 });
 
 test("formatResetAt: same day returns time only", () => {
-  const now = new Date("2026-07-20T14:16:00.000Z");
-  const resetsAt = new Date("2026-07-20T16:30:00.000Z");
+  // Built from local wall-clock components (not a UTC ISO string) so this
+  // test is timezone-independent: formatResetAt renders in local time.
+  const now = new Date(2026, 6, 20, 14, 16, 0);
+  const resetsAt = new Date(2026, 6, 20, 16, 30, 0);
   assert.equal(formatResetAt(resetsAt.toISOString(), now), "4:30 PM");
 });
 
 test("formatResetAt: different day returns weekday and date", () => {
-  const now = new Date("2026-07-20T14:16:00.000Z"); // Monday
-  const resetsAt = new Date("2026-07-27T00:00:00.000Z"); // following Monday
+  const now = new Date(2026, 6, 20, 14, 16, 0); // Monday
+  const resetsAt = new Date(2026, 6, 27, 0, 0, 0); // following Monday, local midnight
   assert.equal(formatResetAt(resetsAt.toISOString(), now), "Monday · Jul 27, 12:00 AM");
 });
 ```
