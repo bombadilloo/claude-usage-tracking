@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="min-height: 100%; background: linear-gradient(160deg,#EDEBE3 0%,#E4E1D7 100%); padding: 40px; font-family: 'Hanken Grotesk', sans-serif; display: flex; justify-content: center;">
+
+  <!-- ============ FULL BROWSER SCENE ============ -->
+  <sc-if value="{{ showBrowser }}" hint-placeholder-val="{{ true }}">
+  <div style="width: 1000px; max-width: 100%; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 70px -20px rgba(50,45,35,0.35); background: #fff; border: 1px solid rgba(60,55,45,0.08);">
+
+    <div style="background: #DCD9CF; padding: 10px 14px 0; display: flex; align-items: center; gap: 10px;">
+      <div style="display: flex; gap: 8px; padding-bottom: 10px;">
+        <span style="width: 12px; height: 12px; border-radius: 50%; background: #E9705B; display: block;"></span>
+        <span style="width: 12px; height: 12px; border-radius: 50%; background: #E8C15A; display: block;"></span>
+        <span style="width: 12px; height: 12px; border-radius: 50%; background: #6FB86A; display: block;"></span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px; background: #F5F4EE; border-radius: 9px 9px 0 0; padding: 9px 16px; margin-left: 6px; font-size: 12.5px; color: #3d3a33; font-weight: 500;">
+        <span style="width: 14px; height: 14px; border-radius: 4px; background: #D97757; display: inline-block;"></span>
+        Claude
+      </div>
+    </div>
+
+    <div style="background: #F5F4EE; padding: 10px 14px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(60,55,45,0.08);">
+      <div style="display: flex; gap: 6px; color: #a19d90;">
+        <span style="font-size: 17px;">‹</span>
+        <span style="font-size: 17px;">›</span>
+        <span style="font-size: 15px;">⟳</span>
+      </div>
+      <div style="flex: 1; background: #EAE7DE; border-radius: 20px; padding: 7px 16px; font-size: 12.5px; color: #6b675d; display: flex; align-items: center; gap: 8px;">
+        <span style="width: 11px; height: 11px; border: 1.5px solid #a19d90; border-radius: 50%; display: inline-block;"></span>
+        claude.ai/chat
+      </div>
+      <div style="display: flex; align-items: center; gap: 4px; position: relative;">
+        <span style="width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; color: #a19d90; font-size: 15px;">🧩</span>
+        <div style="width: 30px; height: 30px; border-radius: 8px; background: #fff; border: 1px solid rgba(217,119,87,0.4); display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 4px rgba(217,119,87,0.25);">
+          <span style="width: 16px; height: 16px; border-radius: 5px; background: #D97757; display: block;"></span>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: relative; height: 560px; background: #FAF9F5; overflow: hidden;">
+      <div style="padding: 46px 60px; opacity: 0.5;">
+        <div style="width: 180px; height: 15px; border-radius: 6px; background: #E7E3D9; margin-bottom: 26px;"></div>
+        <div style="width: 60%; height: 11px; border-radius: 6px; background: #ECE9DF; margin-bottom: 12px;"></div>
+        <div style="width: 78%; height: 11px; border-radius: 6px; background: #ECE9DF; margin-bottom: 12px;"></div>
+        <div style="width: 45%; height: 11px; border-radius: 6px; background: #ECE9DF;"></div>
+      </div>
+
+      <div style="position: absolute; top: -8px; right: 88px; width: 16px; height: 16px; background: #FCFBF7; transform: rotate(45deg); border-left: 1px solid rgba(60,55,45,0.07); border-top: 1px solid rgba(60,55,45,0.07); z-index: 3;"></div>
+
+      <div style="position: absolute; top: 12px; right: 24px; width: 356px; background: #FCFBF7; border-radius: 18px; box-shadow: 0 24px 50px -12px rgba(50,42,30,0.34), 0 4px 12px rgba(50,42,30,0.1); border: 1px solid rgba(60,55,45,0.08); overflow: hidden; z-index: 2;">
+
+        <!-- header -->
+        <div style="padding: 18px 20px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(60,55,45,0.07);">
+          <div style="display: flex; align-items: center; gap: 11px;">
+            <div style="width: 32px; height: 32px; border-radius: 9px; background: #D97757; display: flex; align-items: center; justify-content: center;">
+              <span style="width: 15px; height: 15px; border-radius: 4px; background: #FCFBF7; display: block;"></span>
+            </div>
+            <div>
+              <div style="font-size: 15px; font-weight: 600; color: #23211C; letter-spacing: -0.01em;">Usage</div>
+              <div style="font-size: 11.5px; color: #9b968a; margin-top: 1px;">{{ planLabel }} · resets shown local</div>
+            </div>
+          </div>
+          <span style="color: #b5b0a3; font-size: 16px; cursor: pointer;">⚙</span>
+        </div>
+
+        <!-- meters -->
+        <div style="padding: 18px 20px 6px; display: flex; flex-direction: column; gap: 20px;">
+          <div>
+            <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 9px;">
+              <span style="font-size: 13px; font-weight: 600; color: #38352E;">Session</span>
+              <span style="font-family: 'Newsreader', serif; font-size: 15px; color: #38352E; font-weight: 500;"><span style="color:#C25E45;">47</span><span style="font-size:11px; color:#a5a094;">%</span></span>
+            </div>
+            <div style="height: 9px; border-radius: 6px; background: #EBE7DC; overflow: hidden;">
+              <div style="width: 47%; height: 100%; border-radius: 6px; background: linear-gradient(90deg,#E08A6E,#D97757);"></div>
+            </div>
+            <div style="margin-top: 7px; font-size: 11.5px; color: #9b968a;">Resets in <span style="color:#6f6a5e; font-weight:500;">2h 14m</span> · 4:30 PM</div>
+          </div>
+          <div>
+            <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 9px;">
+              <span style="font-size: 13px; font-weight: 600; color: #38352E;">This week</span>
+              <span style="font-family: 'Newsreader', serif; font-size: 15px; color: #38352E; font-weight: 500;"><span style="color:#C25E45;">68</span><span style="font-size:11px; color:#a5a094;">%</span></span>
+            </div>
+            <div style="height: 9px; border-radius: 6px; background: #EBE7DC; overflow: hidden;">
+              <div style="width: 68%; height: 100%; border-radius: 6px; background: linear-gradient(90deg,#E08A6E,#D97757);"></div>
+            </div>
+            <div style="margin-top: 7px; font-size: 11.5px; color: #9b968a;">Resets <span style="color:#6f6a5e; font-weight:500;">Monday</span> · Jul 27, 12:00 AM</div>
+          </div>
+        </div>
+
+        <!-- notification toggle -->
+        <div style="margin: 16px 20px 0; padding: 13px 15px; background: #F4F1E8; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 15px;">🔔</span>
+            <div>
+              <div style="font-size: 12.5px; font-weight: 600; color: #38352E;">Reset notifications</div>
+              <div style="font-size: 11px; color: #9b968a; margin-top: 1px;">Ping me when limits refresh</div>
+            </div>
+          </div>
+          <sc-if value="{{ notificationsOn }}" hint-placeholder-val="{{ true }}">
+            <div style="width: 40px; height: 23px; border-radius: 12px; background: #D97757; position: relative; flex-shrink: 0;">
+              <span style="position: absolute; top: 2.5px; right: 2.5px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.2);"></span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ notificationsOff }}" hint-placeholder-val="{{ false }}">
+            <div style="width: 40px; height: 23px; border-radius: 12px; background: #D6D1C4; position: relative; flex-shrink: 0;">
+              <span style="position: absolute; top: 2.5px; left: 2.5px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.2);"></span>
+            </div>
+          </sc-if>
+        </div>
+
+        <!-- footer stat -->
+        <div style="margin: 14px 20px 0; padding-top: 14px; border-top: 1px solid rgba(60,55,45,0.07); display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-size: 11.5px; color: #9b968a;">Opened <span style="color:#6f6a5e; font-weight:600;">312×</span></span>
+          <span style="font-size: 11.5px; color: #9b968a;">≈ <span style="color:#C25E45; font-weight:600;">46 min</span> saved</span>
+        </div>
+
+        <!-- kofi -->
+        <div style="padding: 16px 20px 20px;">
+          <a href="https://ko-fi.com/bombadillo" target="_blank" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 12px; background: #38352E; color: #FCFBF7; font-size: 13px; font-weight: 600; letter-spacing: 0.01em;" style-hover="background:#2a2822;">
+            <span style="font-size: 14px;">☕</span> Support on Ko-fi
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ STANDALONE POPUP ============ -->
+  <sc-if value="{{ standalone }}" hint-placeholder-val="{{ false }}">
+  <div style="align-self: center; width: 356px; background: #FCFBF7; border-radius: 18px; box-shadow: 0 24px 50px -12px rgba(50,42,30,0.34), 0 4px 12px rgba(50,42,30,0.1); border: 1px solid rgba(60,55,45,0.08); overflow: hidden;">
+
+    <div style="padding: 18px 20px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(60,55,45,0.07);">
+      <div style="display: flex; align-items: center; gap: 11px;">
+        <div style="width: 32px; height: 32px; border-radius: 9px; background: #D97757; display: flex; align-items: center; justify-content: center;">
+          <span style="width: 15px; height: 15px; border-radius: 4px; background: #FCFBF7; display: block;"></span>
+        </div>
+        <div>
+          <div style="font-size: 15px; font-weight: 600; color: #23211C; letter-spacing: -0.01em;">Usage</div>
+          <div style="font-size: 11.5px; color: #9b968a; margin-top: 1px;">{{ planLabel }} · resets shown local</div>
+        </div>
+      </div>
+      <span style="color: #b5b0a3; font-size: 16px; cursor: pointer;">⚙</span>
+    </div>
+
+    <div style="padding: 18px 20px 6px; display: flex; flex-direction: column; gap: 20px;">
+      <div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 9px;">
+          <span style="font-size: 13px; font-weight: 600; color: #38352E;">Session</span>
+          <span style="font-family: 'Newsreader', serif; font-size: 15px; color: #38352E; font-weight: 500;"><span style="color:#C25E45;">47</span><span style="font-size:11px; color:#a5a094;">%</span></span>
+        </div>
+        <div style="height: 9px; border-radius: 6px; background: #EBE7DC; overflow: hidden;">
+          <div style="width: 47%; height: 100%; border-radius: 6px; background: linear-gradient(90deg,#E08A6E,#D97757);"></div>
+        </div>
+        <div style="margin-top: 7px; font-size: 11.5px; color: #9b968a;">Resets in <span style="color:#6f6a5e; font-weight:500;">2h 14m</span> · 4:30 PM</div>
+      </div>
+      <div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 9px;">
+          <span style="font-size: 13px; font-weight: 600; color: #38352E;">This week</span>
+          <span style="font-family: 'Newsreader', serif; font-size: 15px; color: #38352E; font-weight: 500;"><span style="color:#C25E45;">68</span><span style="font-size:11px; color:#a5a094;">%</span></span>
+        </div>
+        <div style="height: 9px; border-radius: 6px; background: #EBE7DC; overflow: hidden;">
+          <div style="width: 68%; height: 100%; border-radius: 6px; background: linear-gradient(90deg,#E08A6E,#D97757);"></div>
+        </div>
+        <div style="margin-top: 7px; font-size: 11.5px; color: #9b968a;">Resets <span style="color:#6f6a5e; font-weight:500;">Monday</span> · Jul 27, 12:00 AM</div>
+      </div>
+    </div>
+
+    <div style="margin: 16px 20px 0; padding: 13px 15px; background: #F4F1E8; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 15px;">🔔</span>
+        <div>
+          <div style="font-size: 12.5px; font-weight: 600; color: #38352E;">Reset notifications</div>
+          <div style="font-size: 11px; color: #9b968a; margin-top: 1px;">Ping me when limits refresh</div>
+        </div>
+      </div>
+      <sc-if value="{{ notificationsOn }}" hint-placeholder-val="{{ true }}">
+        <div style="width: 40px; height: 23px; border-radius: 12px; background: #D97757; position: relative; flex-shrink: 0;">
+          <span style="position: absolute; top: 2.5px; right: 2.5px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.2);"></span>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notificationsOff }}" hint-placeholder-val="{{ false }}">
+        <div style="width: 40px; height: 23px; border-radius: 12px; background: #D6D1C4; position: relative; flex-shrink: 0;">
+          <span style="position: absolute; top: 2.5px; left: 2.5px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.2);"></span>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="margin: 14px 20px 0; padding-top: 14px; border-top: 1px solid rgba(60,55,45,0.07); display: flex; align-items: center; justify-content: space-between;">
+      <span style="font-size: 11.5px; color: #9b968a;">Opened <span style="color:#6f6a5e; font-weight:600;">312×</span></span>
+      <span style="font-size: 11.5px; color: #9b968a;">≈ <span style="color:#C25E45; font-weight:600;">46 min</span> saved</span>
+    </div>
+
+    <div style="padding: 16px 20px 20px;">
+      <a href="https://ko-fi.com/bombadillo" target="_blank" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 12px; background: #38352E; color: #FCFBF7; font-size: 13px; font-weight: 600; letter-spacing: 0.01em;" style-hover="background:#2a2822;">
+        <span style="font-size: 14px;">☕</span> Support on Ko-fi
+      </a>
+    </div>
+  </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1080,&quot;height&quot;:720},&quot;showBrowser&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;notificationsOn&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;planLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Claude Pro&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const showBrowser = this.props.showBrowser ?? true;
+    const notificationsOn = this.props.notificationsOn ?? true;
+    const planLabel = this.props.planLabel ?? "Claude Pro";
+    return {
+      showBrowser,
+      standalone: !showBrowser,
+      notificationsOn,
+      notificationsOff: !notificationsOn,
+      planLabel,
+    };
+  }
+}
+</script>
+</body>
+</html>
