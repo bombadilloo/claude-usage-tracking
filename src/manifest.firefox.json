@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Claude Usage Widget",
+  "version": "0.1.0",
+  "description": "See your Claude.ai session and weekly usage limits, when they reset, and get notified on reset.",
+  "permissions": ["storage", "alarms", "notifications"],
+  "host_permissions": ["https://claude.ai/*"],
+  "background": {
+    "scripts": ["background.js"],
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "claude-usage-widget@bombadilloo.dev",
+      "strict_min_version": "109.0"
+    }
+  }
+}
