@@ -8,9 +8,13 @@
     "test": "node --test test/*.test.mjs",
     "validate-manifests": "node scripts/validate-manifests.mjs",
     "generate-icons": "node scripts/generate-icons.mjs",
-    "build": "node scripts/build.mjs"
+    "build": "node scripts/build.mjs",
+    "sign-firefox": "node scripts/sign-firefox.mjs"
   },
   "dependencies": {
     "pngjs": "7.0.0"
+  },
+  "devDependencies": {
+    "web-ext": "10.5.0"
   }
 }
