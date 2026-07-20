@@ -1,0 +1,16 @@
+{
+  "name": "claude-usage-widget",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Browser extension showing Claude.ai session/weekly usage limits, reset times, and reset notifications.",
+  "scripts": {
+    "test": "node --test test/",
+    "validate-manifests": "node scripts/validate-manifests.mjs",
+    "generate-icons": "node scripts/generate-icons.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "dependencies": {
+    "pngjs": "7.0.0"
+  }
+}
