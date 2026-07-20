@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup">
+    <header class="header">
+      <div class="header-left">
+        <div class="brand-icon"><span class="brand-icon-inner"></span></div>
+        <div>
+          <div class="title">Usage</div>
+          <div class="subtitle">Resets shown in your local time</div>
+        </div>
+      </div>
+    </header>
+
+    <div id="state-loading" class="state-message">Loading your usage…</div>
+
+    <div id="state-logged-out" class="state-message" hidden>
+      Log in to <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> to see your usage.
+    </div>
+
+    <div id="state-loaded" hidden>
+      <div id="stale-note" class="note" hidden>Showing last-known data — will retry shortly.</div>
+
+      <div class="meters">
+        <div class="meter">
+          <div class="meter-row">
+            <span class="meter-label">Session</span>
+            <span class="meter-value"><span id="session-pct">0</span><span class="pct-sign">%</span></span>
+          </div>
+          <div class="meter-track"><div id="session-bar" class="meter-fill" style="width: 0%"></div></div>
+          <div id="session-reset" class="meter-reset"></div>
+        </div>
+        <div class="meter">
+          <div class="meter-row">
+            <span class="meter-label">This week</span>
+            <span class="meter-value"><span id="week-pct">0</span><span class="pct-sign">%</span></span>
+          </div>
+          <div class="meter-track"><div id="week-bar" class="meter-fill" style="width: 0%"></div></div>
+          <div id="week-reset" class="meter-reset"></div>
+        </div>
+      </div>
+
+      <div class="notif-row">
+        <div class="notif-label">
+          <span class="notif-icon" aria-hidden="true">&#128276;</span>
+          <div>
+            <div class="notif-title">Reset notifications</div>
+            <div class="notif-subtitle">Ping me when limits refresh</div>
+          </div>
+        </div>
+        <button id="notif-toggle" class="toggle" type="button" role="switch" aria-checked="false"></button>
+      </div>
+      <div id="notif-denied-note" class="note" hidden>Notifications are blocked at the OS/browser level.</div>
+
+      <div class="footer-stat">
+        <span>Opened <strong id="opens-count">0×</strong></span>
+        <span>&asymp; <strong id="time-saved">0 sec</strong> saved</span>
+      </div>
+
+      <a class="kofi-button" href="https://ko-fi.com/bombadillo" target="_blank" rel="noopener">
+        <span aria-hidden="true">&#9749;</span> Support on Ko-fi
+      </a>
+    </div>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
