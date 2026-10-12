@@ -16,8 +16,9 @@ export function validateCommonManifest(manifest) {
     }
   }
 
-  if (!Array.isArray(manifest.host_permissions) || !manifest.host_permissions.includes("https://claude.ai/*")) {
-    errors.push('host_permissions must include "https://claude.ai/*"');
+  const hosts = manifest.host_permissions;
+  if (!Array.isArray(hosts) || !hosts.includes("https://claude.ai/*") || !hosts.includes("https://chatgpt.com/*")) {
+    errors.push('host_permissions must include "https://claude.ai/*" and "https://chatgpt.com/*"');
   }
 
   if (manifest.action?.default_popup !== "popup.html") {

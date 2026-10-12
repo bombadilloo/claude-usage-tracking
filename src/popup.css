@@ -1,4 +1,5 @@
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
 body {
   margin: 0;
@@ -11,6 +12,7 @@ body {
 .popup { display: flex; flex-direction: column; }
 
 .header {
+  position: relative;
   padding: 18px 20px 16px;
   display: flex;
   align-items: center;
@@ -46,24 +48,10 @@ body {
 .meter-label { font-size: 13px; font-weight: 600; color: #38352E; }
 .meter-value { font-family: Georgia, "Times New Roman", serif; font-size: 15px; color: #C25E45; font-weight: 500; }
 .pct-sign { font-size: 11px; color: #a5a094; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-.meter-track { height: 9px; border-radius: 6px; background: #EBE7DC; overflow: hidden; }
+.meter-track { position: relative; height: 9px; border-radius: 6px; background: #EBE7DC; overflow: hidden; }
 .meter-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg,#E08A6E,#D97757); transition: width 0.3s ease; }
 .meter-reset { margin-top: 7px; font-size: 11.5px; color: #9b968a; }
 
-.notif-row {
-  margin: 16px 20px 0;
-  padding: 13px 15px;
-  background: #F4F1E8;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.notif-label { display: flex; align-items: center; gap: 10px; }
-.notif-icon { font-size: 15px; }
-.notif-title { font-size: 12.5px; font-weight: 600; color: #38352E; }
-.notif-subtitle { font-size: 11px; color: #9b968a; margin-top: 1px; }
 
 .toggle {
   width: 40px; height: 23px; border-radius: 12px;
@@ -103,3 +91,30 @@ body {
   font-size: 13px; font-weight: 600; letter-spacing: 0.01em;
 }
 .kofi-button:hover { background: #2a2822; }
+#perm-grant { display:block; margin:12px auto 0; padding:6px 14px; border:0; border-radius:6px; background:#C25E45; color:#fff; cursor:pointer; }
+.meter-fill.over-pace { background: linear-gradient(90deg,#E5604D,#C9392B); }
+.pace-tick { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #3d3a33; opacity: 0.75; }
+
+/* ChatGPT / Codex section: dark card with blue bars */
+#codex-section { margin: 16px 20px 0; padding: 16px 16px 18px; background: #262C38; border-radius: 14px; }
+#codex-meters { display: flex; flex-direction: column; gap: 20px; }
+#codex-section .state-message { padding: 8px 4px; color: #a9b3c6; }
+#codex-section .state-message a { color: #7DB2FF; }
+#codex-section .meter-label { color: #E3E8F2; }
+#codex-section .meter-value { color: #7DB2FF; }
+#codex-section .pct-sign { color: #7f8aa0; }
+#codex-section .meter-track { background: #3A4252; }
+#codex-section .meter-fill { background: linear-gradient(90deg,#4F8FF0,#2F6FDB); }
+#codex-section .meter-fill.over-pace { background: linear-gradient(90deg,#E5604D,#C9392B); }
+#codex-section .meter-reset { color: #8791a6; }
+#codex-section .pace-tick { background: #E3E8F2; opacity: 0.8; }
+
+.menu-btn { border: 0; background: transparent; font-size: 22px; line-height: 1; padding: 4px 8px; border-radius: 8px; color: #6f6a5e; cursor: pointer; }
+.menu-btn:hover { background: #F0EDE3; }
+.menu {
+  position: absolute; top: 52px; right: 14px; z-index: 10; width: 250px; padding: 6px;
+  background: #fff; border: 1px solid rgba(60,55,45,0.12); border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(40,35,25,0.15);
+}
+.menu-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 10px; font-size: 12.5px; font-weight: 600; color: #38352E; }
+.menu-note { margin: 0 10px 6px; font-size: 11px; color: #9b968a; }
