@@ -26,9 +26,20 @@ export function formatResetIn(resetsAtIso, now = new Date()) {
 export function formatResetAt(resetsAtIso, now = new Date()) {
   const resetsAt = new Date(resetsAtIso);
   const isSameDay = resetsAt.toDateString() === now.toDateString();
-  const time = resetsAt.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+  const time = resetsAt.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
   if (isSameDay) return time;
   const weekday = resetsAt.toLocaleDateString("en-US", { weekday: "long" });
   const monthDay = resetsAt.toLocaleDateString("en-US", { month: "short", day: "numeric" });
   return `${weekday} · ${monthDay}, ${time}`;
+}
+
+export const SESSION_WINDOW_MS = 5 * 60 * 60 * 1000;
+export const WEEK_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
+
+// Percent of the window already elapsed (= usage level at an even pace), clamped to 0-100.
+export function pacePercent(resetsAtIso, windowMs, now = new Date()) {
+  if (!resetsAtIso) return null;
+  const remaining = new Date(resetsAtIso).getTime() - now.getTime();
+  const elapsed = 1 - remaining / windowMs;
+  return Math.min(100, Math.max(0, elapsed * 100));
 }

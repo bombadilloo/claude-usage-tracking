@@ -45,11 +45,25 @@ test("formatResetAt: same day returns time only", () => {
   // test is timezone-independent: formatResetAt renders in local time.
   const now = new Date(2026, 6, 20, 14, 16, 0);
   const resetsAt = new Date(2026, 6, 20, 16, 30, 0);
-  assert.equal(formatResetAt(resetsAt.toISOString(), now), "4:30 PM");
+  assert.equal(formatResetAt(resetsAt.toISOString(), now), "16:30");
 });
 
 test("formatResetAt: different day returns weekday and date", () => {
   const now = new Date(2026, 6, 20, 14, 16, 0); // Monday
   const resetsAt = new Date(2026, 6, 27, 0, 0, 0); // following Monday, local midnight
-  assert.equal(formatResetAt(resetsAt.toISOString(), now), "Monday · Jul 27, 12:00 AM");
+  assert.equal(formatResetAt(resetsAt.toISOString(), now), "Monday · Jul 27, 00:00");
+});
+
+import { pacePercent, SESSION_WINDOW_MS } from "../src/lib/format.js";
+
+test("pacePercent: 4h left of a 5h window is 20%", () => {
+  const now = new Date("2026-01-01T00:00:00Z");
+  assert.ok(Math.abs(pacePercent("2026-01-01T04:00:00Z", SESSION_WINDOW_MS, now) - 20) < 1e-9);
+});
+
+test("pacePercent: clamps and handles missing reset", () => {
+  const now = new Date("2026-01-01T00:00:00Z");
+  assert.equal(pacePercent("2025-12-31T00:00:00Z", SESSION_WINDOW_MS, now), 100);
+  assert.equal(pacePercent("2026-02-01T00:00:00Z", SESSION_WINDOW_MS, now), 0);
+  assert.equal(pacePercent(null, SESSION_WINDOW_MS, now), null);
 });

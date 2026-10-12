@@ -8,7 +8,7 @@ function validBase() {
     name: "Claude Usage Widget",
     version: "0.1.0",
     permissions: ["storage", "alarms", "notifications"],
-    host_permissions: ["https://claude.ai/*"],
+    host_permissions: ["https://claude.ai/*", "https://chatgpt.com/*"],
     action: { default_popup: "popup.html" },
     icons: { 16: "a", 32: "a", 48: "a", 128: "a" },
   };

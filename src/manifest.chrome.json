@@ -1,10 +1,11 @@
 {
   "manifest_version": 3,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvlWocs5hVUUsFjbkH4xQnUOq12fQIBHL6xzJsGpf0CHnwnjwRistZds+EjU9kIC/xJlQQ9PrpA66Z/nCF/9lhwc0hAigf1ElWmMdssFFaVt8hlJk+dW7fi1gql8Z4ZWrBi+rHfmjNE1vIniwy862JLAPcNPg299AvljgL/pWXpZThMownlgfH8a9bNtcMuI/KZL/fxxUB610SsHWi7bNqD77BPM4nFT1ykckjvuG4e/hW2Fz1bnfKsv2I83eMiK1qq5pvEbl3M8V99taIzmf2hDDQUYuJ7Gt6PJzy11b3ad3s0JVmkuvEQ9CP1lyToNnVEGrr4j+3nD9CUTaGMj/TQIDAQAB",
   "name": "Claude Usage Widget",
   "version": "0.1.0",
   "description": "See your Claude.ai session and weekly usage limits, when they reset, and get notified on reset.",
   "permissions": ["storage", "alarms", "notifications"],
-  "host_permissions": ["https://claude.ai/*"],
+  "host_permissions": ["https://claude.ai/*", "https://chatgpt.com/*"],
   "background": {
     "service_worker": "background.js",
     "type": "module"

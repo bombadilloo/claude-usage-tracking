@@ -14,21 +14,44 @@
           <div class="subtitle">Resets shown in your local time</div>
         </div>
       </div>
+      <button id="menu-btn" class="menu-btn" type="button" aria-label="Settings" aria-haspopup="true" aria-expanded="false">&#8942;</button>
+      <div id="menu" class="menu" hidden>
+        <div class="menu-item">
+          <span>Reset notifications</span>
+          <button class="toggle" type="button" role="switch" data-setting="notificationsOn" aria-checked="true"></button>
+        </div>
+        <div id="notif-denied-note" class="menu-note" hidden>Notifications are blocked at the OS/browser level.</div>
+        <div class="menu-item">
+          <span>Track Claude</span>
+          <button class="toggle" type="button" role="switch" data-setting="claudeEnabled" aria-checked="true"></button>
+        </div>
+        <div class="menu-item">
+          <span>Track ChatGPT / Codex</span>
+          <button class="toggle" type="button" role="switch" data-setting="codexEnabled" aria-checked="true"></button>
+        </div>
+      </div>
     </header>
+
+    <div id="perm-banner" class="state-message" hidden>
+      Browser access to claude.ai and chatgpt.com is needed.
+      <button id="perm-grant" type="button">Grant access</button>
+    </div>
 
     <div id="state-loading" class="state-message">Loading your usage…</div>
 
-    <div id="state-logged-out" class="state-message" hidden>
-      Log in to <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> to see your usage.
-    </div>
 
     <div id="state-loaded" hidden>
       <div id="stale-note" class="note" hidden>Showing last-known data — will retry shortly.</div>
 
-      <div class="meters">
+      <div id="none-note" class="state-message" hidden>Both trackers are off. Turn one on from the &#8942; menu.</div>
+
+      <div id="claude-section" class="meters">
+        <div id="claude-logged-out" class="state-message" hidden>
+          Log in to <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> to see your usage.
+        </div>
         <div class="meter">
           <div class="meter-row">
-            <span class="meter-label">Session</span>
+            <span class="meter-label">Claude session</span>
             <span class="meter-value"><span id="session-pct">0</span><span class="pct-sign">%</span></span>
           </div>
           <div class="meter-track"><div id="session-bar" class="meter-fill" style="width: 0%"></div></div>
@@ -36,7 +59,7 @@
         </div>
         <div class="meter">
           <div class="meter-row">
-            <span class="meter-label">This week</span>
+            <span class="meter-label">Claude this week</span>
             <span class="meter-value"><span id="week-pct">0</span><span class="pct-sign">%</span></span>
           </div>
           <div class="meter-track"><div id="week-bar" class="meter-fill" style="width: 0%"></div></div>
@@ -44,17 +67,31 @@
         </div>
       </div>
 
-      <div class="notif-row">
-        <div class="notif-label">
-          <span class="notif-icon" aria-hidden="true">&#128276;</span>
-          <div>
-            <div class="notif-title">Reset notifications</div>
-            <div class="notif-subtitle">Ping me when limits refresh</div>
+      <div id="codex-section" class="meters">
+        <div id="codex-logged-out" class="state-message" hidden>
+          <span id="codex-login">Log in to <a href="https://chatgpt.com" target="_blank" rel="noopener">chatgpt.com</a> to see Codex usage.</span>
+          <span id="codex-error"></span>
+        </div>
+        <div id="codex-meters" hidden>
+          <div class="meter">
+            <div class="meter-row">
+              <span class="meter-label">Codex session</span>
+              <span class="meter-value"><span id="codex-session-pct">0</span><span class="pct-sign">%</span></span>
+            </div>
+            <div class="meter-track"><div id="codex-session-bar" class="meter-fill" style="width: 0%"></div></div>
+            <div id="codex-session-reset" class="meter-reset"></div>
+          </div>
+          <div class="meter">
+            <div class="meter-row">
+              <span class="meter-label">Codex this week</span>
+              <span class="meter-value"><span id="codex-week-pct">0</span><span class="pct-sign">%</span></span>
+            </div>
+            <div class="meter-track"><div id="codex-week-bar" class="meter-fill" style="width: 0%"></div></div>
+            <div id="codex-week-reset" class="meter-reset"></div>
           </div>
         </div>
-        <button id="notif-toggle" class="toggle" type="button" role="switch" aria-checked="false"></button>
       </div>
-      <div id="notif-denied-note" class="note" hidden>Notifications are blocked at the OS/browser level.</div>
+
 
       <div class="footer-stat">
         <span>Opened <strong id="opens-count">0×</strong></span>
