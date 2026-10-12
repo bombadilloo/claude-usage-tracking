@@ -1,0 +1,48 @@
+name: Release to Firefox (AMO)
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm test
+
+      - run: npm run validate-manifests
+
+      - name: Tag must match manifest and package versions
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          for f in package.json src/manifest.firefox.json src/manifest.chrome.json; do
+            V=$(node -p "require('./$f').version")
+            if [ "$V" != "$TAG" ]; then
+              echo "::error::$f is at version $V but the tag is v$TAG"
+              exit 1
+            fi
+          done
+
+      - run: npm run build
+
+      - name: Submit listed version to addons.mozilla.org
+        run: npm run sign-firefox
+        env:
+          AMO_JWT_ISSUER: ${{ secrets.AMO_JWT_ISSUER }}
+          AMO_JWT_SECRET: ${{ secrets.AMO_JWT_SECRET }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: firefox-build
+          path: dist/firefox/
+          retention-days: 14
