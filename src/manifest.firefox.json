@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Claude Usage Widget",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "See your Claude.ai session and weekly usage limits, when they reset, and get notified on reset.",
   "permissions": ["storage", "alarms", "notifications"],
   "host_permissions": ["https://claude.ai/*", "https://chatgpt.com/*"],
